@@ -7,29 +7,30 @@
    CSS VARIABLES
    ===================== */
 :root {
-    /* Color Palette */
-    --primary-color: #2563eb;
-    --primary-dark: #1e40af;
-    --primary-light: #60a5fa;
-    --secondary-color: #7c3aed;
-    --accent-color: #f59e0b;
+    /* Color Palette — Dark Cool Theme */
+    --primary-color: #58a6ff;
+    --primary-dark: #388bfd;
+    --primary-light: #79c0ff;
+    --secondary-color: #8b5cf6;
+    --accent-color: #b45309;
+    --accent-light: #d97706;
 
-    --dark-bg: #0f172a;
-    --dark-surface: #1e293b;
-    --dark-border: #334155;
+    --dark-bg: #0d1117;
+    --dark-surface: #161b22;
+    --dark-border: #30363d;
 
-    --light-bg: #ffffff;
-    --light-surface: #f8fafc;
-    --light-border: #e2e8f0;
+    --light-bg: #0d1117;
+    --light-surface: #161b22;
+    --light-border: #30363d;
 
-    --text-primary: #0f172a;
-    --text-secondary: #475569;
-    --text-light: #94a3b8;
-    --text-on-dark: #f1f5f9;
+    --text-primary: #e6edf3;
+    --text-secondary: #8b949e;
+    --text-light: #6e7681;
+    --text-on-dark: #e6edf3;
 
-    --success: #10b981;
-    --error: #ef4444;
-    --warning: #f59e0b;
+    --success: #3fb950;
+    --error: #f85149;
+    --warning: #d29922;
 
     /* Typography */
     --font-primary: 'Segoe UI', system-ui, -apple-system, sans-serif;
@@ -50,10 +51,10 @@
     --radius-xl: 1rem;
 
     /* Shadows */
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
 
     /* Transitions */
     --transition-fast: 150ms ease;
@@ -118,7 +119,7 @@ a {
 }
 
 a:hover {
-    color: var(--primary-dark);
+    color: var(--accent-light);
 }
 
 img {
@@ -155,9 +156,9 @@ img {
     top: 0;
     left: 0;
     right: 0;
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(13, 17, 23, 0.92);
     backdrop-filter: blur(10px);
-    box-shadow: var(--shadow-sm);
+    box-shadow: 0 1px 0 var(--dark-border);
     z-index: 1000;
     transition: all var(--transition-base);
 }
@@ -179,7 +180,7 @@ img {
 }
 
 .logo a:hover {
-    color: var(--primary-color);
+    color: var(--accent-light);
 }
 
 .nav-menu {
@@ -204,13 +205,13 @@ img {
     left: 0;
     width: 0;
     height: 2px;
-    background-color: var(--primary-color);
+    background-color: var(--accent-color);
     transition: width var(--transition-base);
 }
 
 .nav-menu a:hover,
 .nav-menu a.active {
-    color: var(--primary-color);
+    color: var(--accent-light);
 }
 
 .nav-menu a:hover::after,
@@ -246,8 +247,8 @@ img {
     align-items: center;
     text-align: center;
     padding: var(--spacing-2xl) var(--spacing-md);
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: #fff;
+    background: linear-gradient(135deg, #0d1117 0%, #161b22 40%, #1c2432 100%);
+    color: #e6edf3;
     position: relative;
     margin-top: 60px;
 }
@@ -263,7 +264,7 @@ img {
 }
 
 .hero-title .highlight {
-    color: var(--accent-color);
+    color: var(--accent-light);
     position: relative;
     display: inline-block;
 }
@@ -295,14 +296,14 @@ img {
     align-items: center;
     gap: var(--spacing-xs);
     animation: bounce 2s infinite;
-    color: #fff;
+    color: var(--text-secondary);
     cursor: pointer;
 }
 
 .scroll-indicator {
     width: 2px;
     height: 40px;
-    background: linear-gradient(to bottom, transparent, #fff);
+    background: linear-gradient(to bottom, transparent, var(--text-secondary));
 }
 
 /* =====================
@@ -321,58 +322,59 @@ img {
 }
 
 .btn-primary {
-    background-color: var(--primary-color);
+    background-color: var(--accent-color);
     color: #fff;
 }
 
 .btn-primary:hover {
-    background-color: var(--primary-dark);
+    background-color: var(--accent-light);
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
 }
 
 .btn-secondary {
     background-color: transparent;
-    color: #fff;
-    border-color: #fff;
+    color: #e6edf3;
+    border-color: var(--dark-border);
 }
 
 .btn-secondary:hover {
-    background-color: #fff;
-    color: var(--primary-color);
+    background-color: var(--dark-surface);
+    color: var(--accent-light);
+    border-color: var(--accent-color);
 }
 
 .btn-outline {
     background-color: transparent;
-    color: var(--primary-color);
-    border-color: var(--primary-color);
+    color: var(--accent-light);
+    border-color: var(--accent-color);
 }
 
 .btn-outline:hover {
-    background-color: var(--primary-color);
+    background-color: var(--accent-color);
     color: #fff;
 }
 
 .btn-light {
-    background-color: #fff;
-    color: var(--primary-color);
+    background-color: var(--accent-color);
+    color: #fff;
 }
 
 .btn-light:hover {
-    background-color: var(--light-surface);
+    background-color: var(--accent-light);
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
 }
 
 .btn-outline-light {
     background-color: transparent;
-    color: #fff;
-    border-color: #fff;
+    color: #e6edf3;
+    border-color: var(--dark-border);
 }
 
 .btn-outline-light:hover {
-    background-color: #fff;
-    color: var(--primary-color);
+    background-color: var(--dark-surface);
+    color: var(--accent-light);
 }
 
 .btn-large {
@@ -395,18 +397,19 @@ section {
 .section-divider {
     width: 60px;
     height: 4px;
-    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(to right, var(--accent-color), var(--accent-light));
     margin: var(--spacing-sm) auto;
     border-radius: var(--radius-sm);
 }
 
 /* Page Header */
 .page-header {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-    color: #fff;
+    background: linear-gradient(135deg, #0d1117 0%, #1c2432 100%);
+    color: #e6edf3;
     text-align: center;
     padding: calc(80px + var(--spacing-xl)) var(--spacing-md) var(--spacing-xl);
     margin-bottom: var(--spacing-xl);
+    border-bottom: 1px solid var(--dark-border);
 }
 
 .page-header h1 {
@@ -457,15 +460,16 @@ section {
 }
 
 .stat {
-    background-color: #fff;
+    background-color: var(--dark-surface);
     padding: var(--spacing-md);
     border-radius: var(--radius-md);
     text-align: center;
     box-shadow: var(--shadow-md);
+    border: 1px solid var(--dark-border);
 }
 
 .stat h3 {
-    color: var(--primary-color);
+    color: var(--accent-light);
     font-size: 2rem;
     margin-bottom: var(--spacing-xs);
 }
@@ -491,12 +495,12 @@ section {
 }
 
 .skill-card {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: rgba(255, 255, 255, 0.03);
     padding: var(--spacing-lg);
     border-radius: var(--radius-lg);
     text-align: center;
     transition: transform var(--transition-base), box-shadow var(--transition-base);
-    border: 1px solid rgba(255, 255, 255, 0.01);
+    border: 1px solid var(--dark-border);
 }
 
 .skill-card:hover {
@@ -530,7 +534,7 @@ section {
 
 .skill-progress {
     height: 100%;
-    background: linear-gradient(to right, var(--primary-light), var(--secondary-color));
+    background: linear-gradient(to right, var(--accent-color), var(--accent-light));
     border-radius: var(--radius-sm);
     transition: width 1s ease;
     width: 0;
@@ -540,7 +544,7 @@ section {
     INTERESTS SECTION
    ===================== */
 .interests-section {
-    background-color: #fff;
+    background-color: var(--dark-bg);
 }
 
 .interests-grid {
@@ -550,10 +554,11 @@ section {
 }
 
 .interest-card {
-    background-color: var(--light-surface);
+    background-color: var(--dark-surface);
     padding: var(--spacing-lg);
     border-radius: var(--radius-lg);
     transition: transform var(--transition-base), box-shadow var(--transition-base);
+    border: 1px solid var(--dark-border);
 }
 
 .interest-card:hover {
@@ -567,7 +572,7 @@ section {
 }
 
 .interest-card h3 {
-    color: var(--primary-color);
+    color: var(--accent-light);
     margin-bottom: var(--spacing-sm);
 }
 
@@ -597,7 +602,7 @@ section {
     top: 0;
     bottom: 0;
     width: 3px;
-    background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(to bottom, var(--accent-color), var(--accent-light));
 }
 
 .timeline-item {
@@ -613,15 +618,15 @@ section {
     top: 0;
     width: 20px;
     height: 20px;
-    background-color: var(--primary-color);
+    background-color: var(--accent-color);
     border-radius: 50%;
-    border: 4px solid #fff;
+    border: 4px solid var(--dark-bg);
     box-shadow: var(--shadow-md);
 }
 
 .timeline-date {
     display: inline-block;
-    background-color: var(--primary-color);
+    background-color: var(--accent-color);
     color: #fff;
     padding: var(--spacing-xs) var(--spacing-sm);
     border-radius: var(--radius-sm);
@@ -631,10 +636,11 @@ section {
 }
 
 .timeline-content {
-    background-color: #fff;
+    background-color: var(--dark-surface);
     padding: var(--spacing-lg);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-md);
+    border: 1px solid var(--dark-border);
 }
 
 .timeline-content h3 {
@@ -643,7 +649,7 @@ section {
 }
 
 .timeline-content h4 {
-    color: var(--primary-color);
+    color: var(--accent-light);
     font-weight: 600;
     margin-bottom: var(--spacing-sm);
 }
@@ -655,7 +661,7 @@ section {
 }
 
 .coursework {
-    background-color: var(--light-surface);
+    background-color: rgba(255, 255, 255, 0.03);
     padding: var(--spacing-md);
     border-radius: var(--radius-sm);
     margin-top: var(--spacing-md);
@@ -665,8 +671,10 @@ section {
     VALUES SECTION
    ===================== */
 .values-section {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-    color: #fff;
+    background: linear-gradient(135deg, #1c2432 0%, #0d1117 100%);
+    color: #e6edf3;
+    border-top: 1px solid var(--dark-border);
+    border-bottom: 1px solid var(--dark-border);
 }
 
 .values-grid {
@@ -676,12 +684,12 @@ section {
 }
 
 .value-card {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.04);
     padding: var(--spacing-lg);
     border-radius: var(--radius-lg);
     text-align: center;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid var(--dark-border);
 }
 
 .value-card h3 {
@@ -699,7 +707,7 @@ section {
     PROJECTS SECTION
    ===================== */
 .projects-preview {
-    background-color: #fff;
+    background-color: var(--dark-bg);
 }
 
 .projects-grid {
@@ -710,11 +718,12 @@ section {
 }
 
 .project-card {
-    background-color: #fff;
+    background-color: var(--dark-surface);
     border-radius: var(--radius-lg);
     overflow: hidden;
     box-shadow: var(--shadow-md);
     transition: transform var(--transition-base), box-shadow var(--transition-base);
+    border: 1px solid var(--dark-border);
 }
 
 .project-card:hover {
@@ -764,8 +773,8 @@ section {
 .tech-tag {
     display: inline-block;
     padding: 0.25rem 0.75rem;
-    background-color: var(--light-surface);
-    color: var(--primary-color);
+    background-color: rgba(180, 83, 9, 0.15);
+    color: var(--accent-light);
     font-size: 0.75rem;
     font-weight: 600;
     border-radius: var(--radius-sm);
@@ -781,21 +790,22 @@ section {
 .resume-container {
     max-width: 900px;
     margin: 0 auto;
-    background-color: #fff;
+    background-color: var(--dark-surface);
     padding: var(--spacing-2xl);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-xl);
+    border: 1px solid var(--dark-border);
 }
 
 .resume-header {
     text-align: center;
     padding: var(--spacing-xl);
-    border-bottom: 2px solid var(--light-border);
+    border-bottom: 2px solid var(--dark-border);
     margin-bottom: var(--spacing-xl);
 }
 
 .resume-header h2 {
-    color: var(--primary-color);
+    color: var(--accent-light);
     margin-bottom: var(--spacing-xs);
 }
 
@@ -826,7 +836,7 @@ section {
 .resume-block {
     margin-bottom: var(--spacing-xl);
     padding-bottom: var(--spacing-lg);
-    border-bottom: 1px solid var(--light-border);
+    border-bottom: 1px solid var(--dark-border);
 }
 
 .resume-block:last-child {
@@ -834,11 +844,11 @@ section {
 }
 
 .section-title {
-    color: var(--primary-color);
+    color: var(--accent-light);
     font-size: 1.5rem;
     margin-bottom: var(--spacing-lg);
     padding-bottom: var(--spacing-sm);
-    border-bottom: 2px solid var(--primary-color);
+    border-bottom: 2px solid var(--accent-color);
 }
 
 .resume-item {
@@ -896,8 +906,8 @@ section {
 }
 
 .skill-tag {
-    background-color: var(--light-surface);
-    color: var(--primary-color);
+    background-color: rgba(180, 83, 9, 0.15);
+    color: var(--accent-light);
     padding: 0.5rem 1rem;
     border-radius: var(--radius-sm);
     font-size: 0.875rem;
@@ -921,9 +931,9 @@ section {
 
 .filter-btn {
     padding: 0.75rem 1.5rem;
-    background-color: #fff;
+    background-color: var(--dark-surface);
     color: var(--text-secondary);
-    border: 2px solid var(--light-border);
+    border: 2px solid var(--dark-border);
     border-radius: var(--radius-md);
     font-weight: 600;
     cursor: pointer;
@@ -932,13 +942,13 @@ section {
 
 .filter-btn:hover,
 .filter-btn.active {
-    background-color: var(--primary-color);
+    background-color: var(--accent-color);
     color: #fff;
-    border-color: var(--primary-color);
+    border-color: var(--accent-color);
 }
 
 .portfolio-grid-section {
-    background-color: #fff;
+    background-color: var(--dark-bg);
 }
 
 .portfolio-grid {
@@ -1044,7 +1054,7 @@ section {
 }
 
 .project-link {
-    color: var(--primary-color);
+    color: var(--accent-light);
     font-weight: 600;
     display: flex;
     align-items: center;
@@ -1067,15 +1077,18 @@ section {
 }
 
 .mastery-card {
-    background-color: #fff;
+    background-color: var(--dark-surface);
     padding: var(--spacing-lg);
     border-radius: var(--radius-md);
-    border-left: 4px solid var(--success);
+    border-left: 4px solid var(--accent-color);
     box-shadow: var(--shadow-sm);
+    border-top: 1px solid var(--dark-border);
+    border-right: 1px solid var(--dark-border);
+    border-bottom: 1px solid var(--dark-border);
 }
 
 .mastery-card h3 {
-    color: var(--success);
+    color: var(--accent-light);
     margin-bottom: var(--spacing-sm);
     font-size: 1.125rem;
 }
@@ -1103,15 +1116,16 @@ section {
 
 .contact-info-panel,
 .contact-form-panel {
-    background-color: #fff;
+    background-color: var(--dark-surface);
     padding: var(--spacing-xl);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-lg);
+    border: 1px solid var(--dark-border);
 }
 
 .contact-info-panel h2,
 .contact-form-panel h2 {
-    color: var(--primary-color);
+    color: var(--accent-light);
     margin-bottom: var(--spacing-lg);
 }
 
@@ -1150,13 +1164,14 @@ section {
 }
 
 .availability {
-    background-color: var(--light-surface);
+    background-color: rgba(255, 255, 255, 0.03);
     padding: var(--spacing-lg);
     border-radius: var(--radius-md);
+    border: 1px solid var(--dark-border);
 }
 
 .availability h3 {
-    color: var(--primary-color);
+    color: var(--accent-light);
     margin-bottom: var(--spacing-sm);
 }
 
@@ -1193,16 +1208,18 @@ section {
 
 .form-control {
     padding: 0.75rem;
-    border: 2px solid var(--light-border);
+    border: 2px solid var(--dark-border);
     border-radius: var(--radius-md);
     font-family: var(--font-primary);
     font-size: 1rem;
     transition: border-color var(--transition-fast);
+    background-color: #0d1117;
+    color: var(--text-primary);
 }
 
 .form-control:focus {
     outline: none;
-    border-color: var(--primary-color);
+    border-color: var(--accent-light);
 }
 
 .form-control.error {
@@ -1275,7 +1292,7 @@ textarea.form-control {
 
 /* FAQ Section */
 .faq-section {
-    background-color: #fff;
+    background-color: var(--dark-bg);
 }
 
 .faq-grid {
@@ -1285,13 +1302,14 @@ textarea.form-control {
 }
 
 .faq-item {
-    background-color: var(--light-surface);
+    background-color: var(--dark-surface);
     padding: var(--spacing-lg);
     border-radius: var(--radius-md);
+    border: 1px solid var(--dark-border);
 }
 
 .faq-item h3 {
-    color: var(--primary-color);
+    color: var(--accent-light);
     font-size: 1.125rem;
     margin-bottom: var(--spacing-sm);
 }
@@ -1325,9 +1343,9 @@ textarea.form-control {
 
 .gallery-filter-btn {
     padding: 0.5rem 1rem;
-    background-color: #fff;
+    background-color: var(--dark-surface);
     color: var(--text-secondary);
-    border: 2px solid var(--light-border);
+    border: 2px solid var(--dark-border);
     border-radius: var(--radius-md);
     font-weight: 500;
     cursor: pointer;
@@ -1336,9 +1354,9 @@ textarea.form-control {
 
 .gallery-filter-btn:hover,
 .gallery-filter-btn.active {
-    background-color: var(--primary-color);
+    background-color: var(--accent-color);
     color: #fff;
-    border-color: var(--primary-color);
+    border-color: var(--accent-color);
 }
 
 .gallery-view-toggle {
@@ -1349,26 +1367,27 @@ textarea.form-control {
 .view-btn {
     width: 40px;
     height: 40px;
-    background-color: #fff;
-    border: 2px solid var(--light-border);
+    background-color: var(--dark-surface);
+    border: 2px solid var(--dark-border);
     border-radius: var(--radius-sm);
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.25rem;
+    color: var(--text-secondary);
     transition: all var(--transition-base);
 }
 
 .view-btn:hover,
 .view-btn.active {
-    background-color: var(--primary-color);
+    background-color: var(--accent-color);
     color: #fff;
-    border-color: var(--primary-color);
+    border-color: var(--accent-color);
 }
 
 .gallery-section {
-    background-color: #fff;
+    background-color: var(--dark-bg);
 }
 
 .gallery-grid {
@@ -1437,8 +1456,8 @@ textarea.form-control {
 }
 
 .view-full-btn {
-    background-color: #fff;
-    color: var(--primary-color);
+    background-color: var(--accent-color);
+    color: #fff;
     padding: 0.5rem 1rem;
     border: none;
     border-radius: var(--radius-sm);
@@ -1448,7 +1467,7 @@ textarea.form-control {
 }
 
 .view-full-btn:hover {
-    background-color: var(--primary-color);
+    background-color: var(--accent-light);
     color: #fff;
 }
 
@@ -1512,8 +1531,9 @@ textarea.form-control {
 .lightbox-close:hover,
 .lightbox-prev:hover,
 .lightbox-next:hover {
-    background-color: #fff;
-    color: var(--primary-color);
+    background-color: var(--accent-color);
+    color: #fff;
+    border-color: var(--accent-color);
 }
 
 .lightbox-close {
@@ -1541,8 +1561,9 @@ textarea.form-control {
 }
 
 .gallery-stats {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-    color: #fff;
+    background: linear-gradient(135deg, #1c2432 0%, #0d1117 100%);
+    color: #e6edf3;
+    border-top: 1px solid var(--dark-border);
 }
 
 .stats-grid {
@@ -1584,8 +1605,8 @@ textarea.form-control {
 
 /* Blog card (listing page) */
 .blog-card {
-    background: var(--light-bg);
-    border: 1px solid var(--light-border);
+    background: var(--dark-surface);
+    border: 1px solid var(--dark-border);
     border-radius: var(--radius-lg);
     overflow: hidden;
     box-shadow: var(--shadow-sm);
@@ -1619,7 +1640,7 @@ textarea.form-control {
 }
 
 .blog-card-content h3 a:hover {
-    color: var(--primary-color);
+    color: var(--accent-light);
 }
 
 .blog-date {
@@ -1666,10 +1687,11 @@ textarea.form-control {
 
 .blog-post-body code {
     font-family: var(--font-mono);
-    background: var(--light-surface);
+    background: rgba(255, 255, 255, 0.06);
     padding: 0.15rem 0.4em;
     border-radius: var(--radius-sm);
     font-size: 0.9em;
+    color: var(--accent-light);
 }
 
 .blog-post-body pre {
@@ -1690,7 +1712,7 @@ textarea.form-control {
 .blog-post-footer {
     margin-top: var(--spacing-xl);
     padding-top: var(--spacing-lg);
-    border-top: 1px solid var(--light-border);
+    border-top: 1px solid var(--dark-border);
 }
 
 /* Responsive adjustments */
@@ -1704,10 +1726,11 @@ textarea.form-control {
     CTA SECTION
    ===================== */
 .cta-section {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-    color: #fff;
+    background: linear-gradient(135deg, #1c2432 0%, #0d1117 100%);
+    color: #e6edf3;
     text-align: center;
     padding: var(--spacing-2xl) var(--spacing-md);
+    border-top: 1px solid var(--dark-border);
 }
 
 .cta-section h2 {
@@ -1863,13 +1886,14 @@ textarea.form-control {
         left: -100%;
         top: 60px;
         flex-direction: column;
-        background-color: #fff;
+        background-color: var(--dark-surface);
         width: 100%;
         text-align: center;
         transition: left var(--transition-base);
         box-shadow: var(--shadow-lg);
         padding: var(--spacing-lg) 0;
         gap: 0;
+        border-bottom: 1px solid var(--dark-border);
     }
 
     .nav-menu.active {
@@ -2145,7 +2169,7 @@ textarea.form-control {
 
 /* Focus styles */
 *:focus-visible {
-    outline: 3px solid var(--primary-color);
+    outline: 3px solid var(--accent-color);
     outline-offset: 2px;
 }
 
