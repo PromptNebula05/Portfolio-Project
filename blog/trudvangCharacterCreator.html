@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Blog - Morgan Rogers | Insights on Web Development, Software Engineering, Cybersecurity, and My Journey in IT">
+        <title>Blog - Morgan Rogers</title>
+        <link rel="stylesheet" href="../styles.css">
+    </head>
+    <body>
+        <nav class="navbar" id="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="../index.html">Morgan Rogers</a>
+                </div>
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../about.html">About</a></li>
+                    <li><a href="../resume.html">Resume</a></li>
+                    <li><a href="../portfolio.html">Portfolio</a></li>
+                    <li><a href="../gallery.html">Gallery</a></li>
+                    <li><a href="../blog.html">Blog</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <header class="page-header">
+            <div class="container">
+                <h1>Blog</h1>
+                <p>Thoughts, insights, and updates on web development, software engineering, cybersecurity, and my journey in IT.</p>
+            </div>
+        </header>
+
+        <section class="blog-post-section">
+            <div class="container">
+                <article class="blog-post">
+                    <header class="blog-post-header">
+                        <h1>Trudvang Character Creator</h1>
+                        <div class="blog-meta">
+                            <span class="blog-date">March 27, 2026</span>
+                            <span class="blog-author">Morgan Rogers</span>
+                        </div>
+                    </header>
+                    <div class="blog-post-body">
+                        <h3>Why Trudvang?</h3>
+                        <p>
+                            If you've spent any time in the TTRPG space, you've probably heard of <em>D&D, Pathfinder,</em> maybe <em>Call of Cthulhu</em>.
+                            <strong>Trudvang Chronicles</strong> is... not one of those. It's a beautifully illustrated, Nordic-folklore-inspired RPG with
+                            deep lore, a unique magis system, and - crucially for this project - a character creation process that is <em>dense</em>.
+                        </p>
+                        <p>
+                            Rolling up a Trudvang character involves multiple steps: choosing a people and archetype, assigning attributes, selecting skills,
+                            picking disciplines, and more. It's the kind of thing that begs for a guided digital tool, especially for new players. So I built one.
+                        </p>
+                        <p>
+                            <a href="https://github.com/PromptNebula05/Trudvang_Project/tree/main/Trudvang_Character_Creator">View the project on GitHub</a>
+                        </p>
+                        <h4>What I Built</h4>
+                        <p>
+                            The <strong>Trudvang Character Creator</strong> is a full-stack character creation app that walks players through a 
+                            <strong>7-step wizard:</strong>
+                        </p>
+                        <p>
+                            <strong>Origin → Archetype → Traits → Skills → Disciplines → Equipment → Review</strong>
+                        </p>
+                        <p>
+                            At each step, the app validates choices, enforces game rules, and feeds selections forward into the next stage. The goal: take a process
+                            that normally involves flipping between rulebook chapters and scribbling on scratch paper, and turn it into something guided and intuitive.
+                        </p>
+                        <h4>Key Features</h4>
+                        <ul style="margin-left: 40px;">
+                            <li><strong>7-step creation wizard - </strong>Each stage of character generation gets its own focused screen</li>
+                            <li><strong>Creation Point budget system - </strong>Players choose an experience tier (Beginner 300 / Practiced 500 / Experienced 700 CP) that
+                            governs how many points they can spend across traits, skills, and disciplines</li>
+                            <li><strong>Seven core traits - </strong>Charisma, Constitution, Dexterity, Intelligence, Perception, Psyche, and Strength, each ranging from -4 to +4</li>
+                            <li><strong>Skills with nested Disciplines and Specialties - </strong>Reflecting Trudvang's layered skill system</li>
+                            <li><strong>Character dashboard - </strong>A saved character sheet viewer so you can revisit and review your creations</li>
+                            <li><strong>Admin Panel - </strong>For managing game content like Origins, Archetypes, Skills, and Equipment</li>
+                            <li><strong>Auth & role-based access - </strong>JWT authentication with admin and standard user roles</li>
+                        </ul>
+                        <p></p>
+                        <h3>The Process</h3>
+                        <p>
+                            This project has been one of those <em>"learn by building"</em> experiences. A few things that shaped how it came together:
+                        </p>
+                        <h4>The Tech Stack</h4>
+                        <p>
+                            I wanted to use this project to get hands-on experience with a modern full-stack JavaScript architecture:
+                        </p>
+                        <ul style="margin-left: 40 px;">
+                            <li><strong>Frontend: </strong>React + React Router + Apollo Client</li>
+                            <li><strong>Backend: </strong>Node.js + Express(REST API) alongside Apollo Server 4 + GraphQL</li>
+                            <li><strong>Database: </strong>MongoDB + Mongoose</li>
+                            <li><strong>Auth: </strong>JWT + bcryptjs for authentication and role-basec access control</li>
+                        </ul>
+                        <p></p>
+                        <p>
+                            Running both a REST API and a GraphQL endpoint side by side was a deliberate choice. REST handles auth and straightforward CRUD, while GraphQL powers
+                            the more complex, nested queries that character data demands (think: fetching an Origin with its associated Archetypes, Skills, and Disciplines in 
+                            one shot).
+                        </p>
+                        <h4>Starting With the Data Model</h4>
+                        <p>
+                            Trudvang's character creation rules are intricate. Before writing a single component, I had to map out the relationships - Origins, Archetypes, Traits,
+                            Skills, Disciplines, Specialties - and figure out how to represent them in MongoDB in a way the app could reason about. The Creation Point system added
+                            another layer: every choice has a cost, and the budget depends on experience tier. Getting the data model right early saved me a ton of headaches downstream.
+                        </p>
+                        <h4>Multi-Step Forms Are Deceptively Hard</h4>
+                        <p>
+                            A 7-step wizard sounds straightforward until you need to handle:
+                        </p>
+                        <ul style="margin-left: 40px;">
+                            <li><strong>Conditional logic</strong> between steps - Skills, Disciplines, and Specialties are hierarchically dependent; you must invest levels in a parent
+                            Skill before you can advance its Disciplines, and likewise for Specialties within those Disciplines</li>
+                            <li><strong>Budget validation</strong> that spans multiple stages - spending CP on Traits affects what's left for Skills and Disciplines</li>
+                            <li><strong>State management</strong> across the full flow</li>
+                            <li><strong>Navigation - </strong>letting users go back and change earlier decisions without blowing up downstream selections</li>
+                        </ul>
+                        <p></p>
+                        <p>
+                            React Router and careful state architecture made this manageable, but it took deliberate decisions to keep things clean as the wizard grew.
+                        </p>
+                        <h4>Building for an Obscure System</h4>
+                        <p>
+                            One unexpected challenge: there aren't many digital references for Trudvang. No open APIs, no community databases to pull from. Everything had to be manually
+                            structured from the <em>Trudvang Chronicles Player's Handbook</em> (Berggvist & Malmberg, 2017). It was tedious, but it gave me an appreciation for data modelling
+                            that I wouldn't have gotten from a more mainstream system. I ended up writing seed scripts (dbInit.js) to populate the database with all the game data - Origins,
+                            Archetypes, Skills, Disciplines, Specialties, and Equipment - so the app is playable out of the box.
+                        </p>
+                        <h3>Where It Stands</h3>
+                        <p>
+                            The core wizard flow is <strong>functional and complete</strong> - you can walk through all seven steps and produce a playable character. The character dashboard
+                            lets you view saved characters, and the admin panel is in place for managing game content. Auth works, roles work, and the seed data gives you a working app right
+                            out of the box.
+                        </p>
+                        <p>
+                            But there's a difference between <em>functional</em> and <em>finished</em>. Some features need fleshing out, and there are rough edges that need smoothing.
+                        </p>
+                        <h3>What Lies Ahead</h3>
+                        <p>
+                            Here's what's on the roadmap to take this from <em>functional</em> to <em>finished</em>:
+                        </p>
+                        <h4>Creation Budget Selection</h4>
+                        <p>
+                            The three expeience tiers (Beginner 300 / Practiced 500 / Experienced 700 CP) are defined in the system, but players can't actually choose between them yet during
+                            character creation. Building a budget selection step, or integrating it into the first stage of the wizard, is a key missing piece. Once it's in place, the rest
+                            of the wizard can dynamically enforce the correct CP ceiling throughout the creation process.
+                        </p>
+                        <h4>Equipment System</h4>
+                        <p>
+                            The Equipment step exists in the wizard flow, but it needs work on two fronts:
+                        </p>
+                        <p>
+                            <strong>Seed Data: </strong>The equipment database is currently incomplete. A full pass through the <em>Trudvang Chronicles Player's Handbook</em> is needed to
+                            populate all gear items - weapons, armor, tools, and consumables - with accurate stats, costs, descriptions, and category tags.
+                        </p>
+                        <p>
+                            <strong>Starting Gear vs. Starting Currency: </strong>Trudvang character creation includes an important choice at the equipment stage: each archetype offeres (typically)
+                            three preset gear packages tailored to that character archetype. Players can select one of those packages for free, or forgo them entirely and instead receive a
+                            starting currency amount to spend freely on individual items. The wizard needs to present this choice clearly by surfacing the archetyp-specific gear options first,
+                            with a fallback path to the full equipment shop for players who prefer to build their own kit from scratch.
+                        </p>
+                        <h4>Character Deletion</h4>
+                        <p>
+                            You can create and view characters, but deleting them isn't fully wired up yet. Adding proper deletion with confirmation dialogs is a priority for the dashboard.
+                        </p>
+                        <h4>Admin Features</h4>
+                        <p>
+                            The admin panel exists for managing game content, but it needs expansion, i.e., better CRUD flows for Origins, Archetypes, Skills, and Equipment, plus user management
+                            capabilities.
+                        </p>
+                        <h4>General Polish</h4>
+                        <ul style="margin-left: 40px;">
+                            <li>UI/UX refinements across the wizard steps</li>
+                            <li>Better error handling and edge case coverage</li>
+                            <li>Improved responsive design for mobile</li>
+                            <li>Code cleanup and refactoring</li>
+                            <li>Potential deployment (currently runs locally on Node.js 18+ and MongoDB)</li>
+                        </ul>
+                        <p></p>
+                        <h3>Lessons So Far</h3>
+                        <p>
+                            A few takeaways from this build that apply well beyond a niche RPG tool:
+                        </p>
+                        <ol type="1" style="margin-left: 40px;">
+                            <li><strong>Niche projects are great teachers. </strong>Working without an existing ecosystem forced me to think through every layer of the problem myself.</li>
+                            <li><strong>Multi-step workflows are a real-world pattern. </strong>Onboarding flows, checkout processes, application forms - the wizard pattern shows up
+                            everywhere. Building one from scratch gave me a deep understanding of the UX and state management challenges involved.</li>
+                            <li><strong>"Mostly done" is where the real work begins. </strong>Getting the core flow working was the fun part. Finishing the remaining features, hadnling
+                            edge cases, and polishing the experience, that's where discipline matters.</li>
+                        </ol>
+                        <h3>Follow Along</h3>
+                        <p>
+                            This is an active project and I'll be sharing updates as I work through the roadmap. If you're into TTRPGs, React, or just enjoy watching someone build something for
+                            an audience of maybe twelve people, stay tuned.
+                        </p>
+                        <p>
+                            <a href="https://github.com/PromptNebula05/Trudvang_Project/tree/main/Trudvang_Character_Creator">Trudvang Character Creator on GitHub</a>
+                        </p>
+                    </div>
+                    <footer class="blog-post-footer">
+                        <a href="../blog.html" class="btn btn-outline">← Back to Blog</a>
+                    </footer>
+                </article>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h3>Morgan Rogers</h3>
+                        <p>Computer Information Systems Professional</p>
+                        <p>Boston University - MS in CIS</p>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="../index.html">Home</a></li>
+                            <li><a href="../about.html">About</a></li>
+                            <li><a href="../resume.html">Resume</a></li>
+                            <li><a href="../portfolio.html">Portfolio</a></li>
+                            <li><a href="../gallery.html">Gallery</a></li>
+                            <li><a href="../blog.html">Blog</a></li>
+                            <li><a href="../contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Connect</h4>
+                        <ul class="social-links">
+                            <li><a href="https://github.com/PromptNebula05" target="_blank" rel="noopener">GitHub</a></li>
+                            <li><a href="https://www.linkedin.com/in/morgan-rogers-0042972b9/" target ="_blank" rel="noopener">LinkedIn</a></li>
+                            <li><a href="mailto:morogers@bu.edu">Email</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Location</h4>
+                        <p>Cornish, Maine 04020</p>
+                        <p>(207) 823-0747</p>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2026 Morgan Rogers. All rights reserved.</p>
+                    <p class="footer-note">Built with HTML5, CSS3, JavaScript & React</p>
+                </div>
+            </div>
+        </footer>
+
+        <script src="../script.js"></script>
+    </body>
+</html>
