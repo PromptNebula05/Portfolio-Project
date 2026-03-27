@@ -709,7 +709,7 @@ class ResumeDownloader {
     }
 
     download() {
-        window.open('assets/Morgan_Rogers_Resume.pdf', '_blank');
+        window.open('assets/Morgan_Rogers_SWE_Resume.pdf', '_blank');
     }
 }
 
