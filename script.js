@@ -91,6 +91,7 @@ class Navigation {
 class FormValidator {
     constructor(formId) {
         this.form = document.getElementById(formId);
+        this.defaultErrorMessage = 'Please correct the errors above and try again.';
         if (this.form) {
             this.init();
         }
@@ -355,15 +356,51 @@ class FormValidator {
                 this.form.reset();
                 this.updateCharCount(document.getElementById('message'));
             } else {
-                this.showError();
+                this.showError(await this.getSubmitErrorMessage(response));
             }
         } catch (error) {
-            this.showError();
+            this.showError('Unable to send your message right now. Please try again later.');
         } finally {
             btnText.style.display = 'inline';
             btnLoader.style.display = 'none';
             submitBtn.disabled = false;
         }
+    }
+
+    async getSubmitErrorMessage(response) {
+        if (response.status === 429) {
+            return this.formatRateLimitMessage(response.headers.get('Retry-After'));
+        }
+
+        if (response.status >= 500) {
+            return 'Unable to send your message right now. Please try again later.';
+        }
+
+        try {
+            const payload = await response.json();
+            if (typeof payload?.error === 'string' && payload.error.trim()) {
+                return payload.error;
+            }
+        } catch (error) {
+            // Fall back to the default message when the response body is not JSON.
+        }
+
+        return this.defaultErrorMessage;
+    }
+
+    formatRateLimitMessage(retryAfterHeader) {
+        const retryAfterSeconds = Number.parseInt(retryAfterHeader || '0', 10);
+
+        if (!Number.isInteger(retryAfterSeconds) || retryAfterSeconds <= 0) {
+            return 'Too many requests. Please try again a little later.';
+        }
+
+        if (retryAfterSeconds >= 60) {
+            const minutes = Math.ceil(retryAfterSeconds / 60);
+            return `Too many requests. Please try again in ${minutes} minute${minutes === 1 ? '' : 's'}.`;
+        }
+
+        return `Too many requests. Please try again in ${retryAfterSeconds} second${retryAfterSeconds === 1 ? '' : 's'}.`;
     }
 
     showSuccess() {
@@ -378,9 +415,10 @@ class FormValidator {
         }
     }
 
-    showError() {
+    showError(message = this.defaultErrorMessage) {
         const errorElement = document.getElementById('formError');
         if (errorElement) {
+            errorElement.innerHTML = `<strong>✗ Error!</strong> ${message}`;
             errorElement.style.display = 'block';
             errorElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
@@ -395,7 +433,10 @@ class FormValidator {
         const errorElement = document.getElementById('formError');
 
         if (successElement) successElement.style.display = 'none';
-        if (errorElement) errorElement.style.display = 'none';
+        if (errorElement) {
+            errorElement.style.display = 'none';
+            errorElement.innerHTML = `<strong>✗ Error!</strong> ${this.defaultErrorMessage}`;
+        }
     }
 }
 
