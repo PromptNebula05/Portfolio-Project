@@ -143,7 +143,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="email">Phone Number <span class="required">*</span></label>
+                               <label for="phone">Phone Number</label>
                             <input
                                 type="tel"
                                 id="phone"
@@ -155,7 +155,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="email">Subject <span class="required">*</span></label>
+                            <label for="subject">Subject <span class="required">*</span></label>
                             <select
                                 id="subject"
                                 name="subject"
@@ -175,10 +175,10 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="email">Message <span class="required">*</span></label>
+                            <label for="message">Message <span class="required">*</span></label>
                             <textarea
-                                id="email"
-                                name="email"
+                                id="message"
+                                name="message"
                                 class="form-control"
                                 rows="6"
                                 placeholder="Tell me about your inquiry..."
@@ -201,6 +201,11 @@
                                 <span>I agree to be contacted regarding my inquiry <span class="required">*</span></span>
                             </label>
                             <span class="error-message" id="consentError"></span>
+                        </div>
+
+                        <div class="visually-hidden" aria-hidden="true">
+                            <label for="website">Website</label>
+                            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
                         </div>
 
                         <div class="form-actions">
@@ -235,9 +240,9 @@
                 <div class="faq-item">
                     <h3>What is your availability?</h3>
                     <p>
-                        I'm currently pursuing my Mayster's degree (expected August 2026) and am available
-                        for part-time opportunities during the academic year and full-time during breaks.
-                        I'm also available for remote work arrangements.
+                        In August 2026, I completed my Master's degree in Computer Information Systems and have continued
+                        my education, now in Software Engineering. Iam available for part-time opportunities during the
+                        academic year and full-time during breaks. I'm also available for remote work arrangements.
                     </p>
                 </div>
                 <div class="faq-item">
@@ -281,6 +286,7 @@
                 <div class="footer-section">
                     <h4>Connect</h4>
                     <ul class="social-links">
+                        <li><a href="https://gitlab.com/mroge153" target="_blank" rel="noopener">GitLab</a></li>
                         <li><a href="https://github.com/PromptNebula05" target="_blank" rel="noopener">GitHub</a></li>
                         <li><a href="https://www.linkedin.com/in/morgan-rogers-0042972b9/" target ="_blank" rel="noopener">LinkedIn</a></li>
                         <li><a href="mailto:mrgn.rogers@gmail.com">Email</a></li>
@@ -302,3 +308,4 @@
     <script src="script.js"></script>
 </body>
 </html>
+

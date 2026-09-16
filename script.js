@@ -96,7 +96,7 @@ class FormValidator {
         }
     }
 
-    int() {
+    init() {
         this.form.addEventListener('submit', (e) => this.handleSubmit(e));
 
         // Real-time validation
@@ -130,7 +130,7 @@ class FormValidator {
         const message = this.form.querySelector('#message');
         const consent = this.form.querySelector('#consent');
 
-        if (!this.valdateName(name)) isValid = false;
+        if (!this.validateName(name)) isValid = false;
         if (!this.validateEmail(email)) isValid = false;
         if (!this.validateSubject(subject)) isValid = false;
         if (!this.validateMessage(message)) isValid = false;
@@ -154,7 +154,7 @@ class FormValidator {
 
         switch(fieldId) {
             case 'name':
-                return this.valdateName(field);
+                return this.validateName(field);
             case 'email':
                 return this.validateEmail(field);
             case 'phone':
@@ -322,8 +322,7 @@ class FormValidator {
         }
     }
 
-    submitForm(formData) {
-        // Show loading state
+    async submitForm(formData) {
         const submitBtn = this.form.querySelector('button[type="submit"]');
         const btnText = submitBtn.querySelector('.btn-text');
         const btnLoader = submitBtn.querySelector('.btn-loader');
@@ -332,26 +331,39 @@ class FormValidator {
         btnLoader.style.display = 'inline';
         submitBtn.disabled = true;
 
-        // Simulate form submission (in real app, would send to server)
-        setTimeout(() => {
-            // Reset button
+        try {
+            const payload = {
+                name: formData.get('name')?.trim(),
+                email: formData.get('email')?.trim(),
+                phone: formData.get('phone')?.trim(),
+                subject: formData.get('subject'),
+                message: formData.get('message')?.trim(),
+                consent: this.form.querySelector('#consent').checked,
+                website: formData.get('website') || ''
+            };
+
+            const response = await fetch('https://vercel-p7mu-ogl26huby-promptnebula05.vercel.app/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            });
+
+            if (response.ok) {
+                this.showSuccess();
+                this.form.reset();
+                this.updateCharCount(document.getElementById('message'));
+            } else {
+                this.showError();
+            }
+        } catch (error) {
+            this.showError();
+        } finally {
             btnText.style.display = 'inline';
             btnLoader.style.display = 'none';
             submitBtn.disabled = false;
-
-            // Show success message
-            this.showSuccess();
-
-            // Reset form
-            this.form.reset();
-            this.updateCharCount(document.getElementById('message'));
-
-            // Log form data (for demonstration)
-            console.log('Form submitted with data');
-            for (let [key, value] of formData.entries()) {
-                console.log(`${key}: ${value}`);
-            }
-        }, 1500)
+        }
     }
 
     showSuccess() {
