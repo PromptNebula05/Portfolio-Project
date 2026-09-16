@@ -134,7 +134,7 @@ class FormValidator {
         if (!this.validateEmail(email)) isValid = false;
         if (!this.validateSubject(subject)) isValid = false;
         if (!this.validateMessage(message)) isValid = false;
-        if (!this.validateConsent(constent)) isValid = false;
+        if (!this.validateConsent(consent)) isValid = false;
 
         // Optional phone validation
         const phone = this.form.querySelector('#phone');
@@ -184,7 +184,7 @@ class FormValidator {
             return false;
         }
 
-        if (!/^[a-zA-Z/s'-]+$/.test(value)) {
+        if (!/^[a-zA-Z\s'-]+$/.test(value)) {
             this.showFieldError(field, errorElement, 'Name can only contain letters, spaces, hyphens, and apostrophes');
             return false;
         }
