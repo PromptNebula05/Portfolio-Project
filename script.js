@@ -342,7 +342,7 @@ class FormValidator {
                 website: formData.get('website') || ''
             };
 
-            const response = await fetch('https://vercel-p7mu-ogl26huby-promptnebula05.vercel.app/api/contact', {
+            const response = await fetch('https://vercel-p7mu.vercel.app/api/contact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
